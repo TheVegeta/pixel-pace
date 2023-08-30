@@ -96,6 +96,14 @@ body {
   align-items: flex-start;
 }
 
+.center-item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .configure-border-1,
 .configure-border-2,
 .spinner-box {

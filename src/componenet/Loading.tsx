@@ -2,7 +2,7 @@ import "../assets/style.css";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="center-item">
       <div className="spinner-box">
         <div className="configure-border-1">
           <div className="configure-core"></div>
