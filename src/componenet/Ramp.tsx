@@ -23,6 +23,8 @@ const Ramp = () => {
     }),
     useRef(null)
   );
+
+  return null;
 };
 
 export default Ramp;

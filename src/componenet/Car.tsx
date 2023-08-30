@@ -56,15 +56,20 @@ const Car = () => {
     <group
       // @ts-ignore
       ref={vehicle}
+      name="vehicle"
     >
-      {/* <primitive object={mesh} rotation-y={Math.PI} />; */}
-      <mesh
-        //   @ts-ignore
+      <group
+        // @ts-ignore
         ref={chassisBody}
+        name="chassisBody"
       >
-        <meshBasicMaterial transparent={true} opacity={0.3} />
-        <boxGeometry args={chassisBodyArgs} />
-      </mesh>
+        <primitive
+          // @ts-ignore
+          object={mesh}
+          rotation-y={Math.PI}
+          position={[0, -0.09, 0]}
+        />
+      </group>
     </group>
   );
 };
