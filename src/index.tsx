@@ -1,3 +1,4 @@
+import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 import { createRoot } from "react-dom/client";
 import App from "./App";
@@ -7,6 +8,8 @@ const root = createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
   <Canvas>
-    <App />
+    <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
+      <App />
+    </Physics>
   </Canvas>
 );

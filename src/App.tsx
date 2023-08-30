@@ -4,6 +4,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 import { Suspense } from "react";
+import Car from "./componenet/Car";
 import Ground from "./componenet/Ground";
 import Track from "./componenet/Track";
 
@@ -21,6 +22,7 @@ const App = () => {
 
       <Ground />
       <Track />
+      <Car />
     </Suspense>
   );
 };
