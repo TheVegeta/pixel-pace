@@ -1,5 +1,4 @@
 import { FC, useEffect } from "react";
-import { LinearSRGBColorSpace } from "three";
 import ColliderBox from "./ColliderBox";
 import Ramp from "./Ramp";
 
@@ -11,7 +10,6 @@ const Track: FC<{ result: any; colorMap: any; rampResult: any }> = ({
   useEffect(() => {
     if (colorMap) {
       colorMap.anisotropy = 16;
-      colorMap.colorSpace = LinearSRGBColorSpace;
     }
   }, [colorMap]);
 
