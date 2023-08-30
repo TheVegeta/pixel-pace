@@ -12,7 +12,7 @@ const Game = () => {
         </Physics>
       </Canvas>
 
-      <div className="controls">
+      <div className="controls" style={{ opacity: 0.5 }}>
         <p>press w a s d to move</p>
         <p>press k to swap camera</p>
         <p>press r to reset</p>
