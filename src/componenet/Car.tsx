@@ -1,11 +1,12 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { FC, useEffect, useRef } from "react";
+import { Quaternion, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import useControls from "../hooks/useControls";
 import { useWheels } from "../hooks/useWheels";
 
-const Car = () => {
+const Car: FC<{ thirdPerson: boolean }> = ({ thirdPerson }) => {
   let mesh = useLoader(
     GLTFLoader,
     process.env.PUBLIC_URL + "/models/car.glb"
@@ -51,6 +52,28 @@ const Car = () => {
   );
 
   useControls(vehicleApi, chassisApi);
+
+  useFrame((state) => {
+    if (!thirdPerson || !chassisBody.current) return;
+
+    let position = new Vector3(0, 0, 0);
+    position.setFromMatrixPosition(chassisBody.current.matrixWorld);
+
+    let quaternion = new Quaternion(0, 0, 0, 0);
+    quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
+
+    let wDir = new Vector3(0, 0, 1);
+    wDir.applyQuaternion(quaternion);
+    wDir.normalize();
+
+    let cameraPosition = position
+      .clone()
+      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 0.3, 0)));
+
+    wDir.add(new Vector3(0, 0.2, 0));
+    state.camera.position.copy(cameraPosition);
+    state.camera.lookAt(position);
+  });
 
   return (
     <group
