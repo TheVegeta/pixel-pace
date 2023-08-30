@@ -4,7 +4,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TextureLoader } from "three";
 import { GLTFLoader } from "three-stdlib";
 import Car from "./componenet/Car";
@@ -65,7 +65,7 @@ const App = () => {
   }, [thirdPerson]);
 
   return (
-    <Suspense fallback={null}>
+    <>
       <Environment
         files={process.env.PUBLIC_URL + "/textures/envmap.hdr"}
         // @ts-ignore
@@ -78,7 +78,7 @@ const App = () => {
       <Ground gridMap={gridMap} aoMap={aoMap} alphaMap={alphaMap} />
       <Track rampResult={rampResult} result={result} colorMap={colorMap} />
       <Car thirdPerson={thirdPerson} mesh={mesh} />
-    </Suspense>
+    </>
   );
 };
 
