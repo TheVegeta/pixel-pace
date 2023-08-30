@@ -13,7 +13,7 @@ import Track from "./componenet/Track";
 
 const App = () => {
   const [thirdPerson, setThirdPerson] = useState(false);
-  const [cameraPosition, setCameraPosition] = useState([-6, 3.9, 6.21]);
+  const [, setCameraPosition] = useState([-6, 3.9, 6.21]);
 
   let mesh = useLoader(
     GLTFLoader,
@@ -52,7 +52,7 @@ const App = () => {
 
   useEffect(() => {
     function keydownHandler(e: { key: string }) {
-      if (e.key == "k") {
+      if (e.key === "k") {
         // random is necessary to trigger a state change
         if (thirdPerson)
           setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
