@@ -127,13 +127,13 @@ body {
 
 .configure-border-1 {
   position: absolute;
-  background: #fb5b53;
+  background: #f20c0c;
   animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
 }
 
 .configure-border-2 {
   left: -115px;
-  background: #3ff9dc;
+  background: #0c5912;
   transform: rotate(45deg);
   animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
 }

@@ -8,7 +8,7 @@ const Ramp: FC<{ rampResult: any }> = ({ rampResult: result }) => {
   const vertices = geometry.attributes.position.array;
   const indices = geometry.index.array;
 
-  const [ref] = useTrimesh(
+  useTrimesh(
     () => ({
       args: [vertices, indices],
       mass: 0,

@@ -8,7 +8,7 @@ const Ground: FC<{
   aoMap: any;
   alphaMap: any;
 }> = ({ alphaMap, aoMap, gridMap }) => {
-  const [ref] = usePlane(
+  usePlane(
     () => ({
       type: "Static",
       rotation: [-Math.PI / 2, 0, 0],
