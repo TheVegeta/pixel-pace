@@ -1,31 +1,19 @@
 import { usePlane } from "@react-three/cannon";
 import { MeshReflectorMaterial } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
-import { BufferAttribute, Mesh, TextureLoader } from "three";
+import { FC, useEffect, useRef } from "react";
+import { BufferAttribute, Mesh } from "three";
 
-const Ground = () => {
+const Ground: FC<{
+  gridMap: any;
+  aoMap: any;
+  alphaMap: any;
+}> = ({ alphaMap, aoMap, gridMap }) => {
   const [ref] = usePlane(
     () => ({
       type: "Static",
       rotation: [-Math.PI / 2, 0, 0],
     }),
     useRef(null)
-  );
-
-  const gridMap = useLoader(
-    TextureLoader,
-    process.env.PUBLIC_URL + "/textures/grid.png"
-  );
-
-  const aoMap = useLoader(
-    TextureLoader,
-    process.env.PUBLIC_URL + "/textures/ground-ao.png"
-  );
-
-  const alphaMap = useLoader(
-    TextureLoader,
-    process.env.PUBLIC_URL + "/textures/alpha-map.png"
   );
 
   const meshRef = useRef<Mesh>(null);

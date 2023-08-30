@@ -1,17 +1,14 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { FC, useEffect, useRef } from "react";
 import { Quaternion, Vector3 } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import useControls from "../hooks/useControls";
 import { useWheels } from "../hooks/useWheels";
 
-const Car: FC<{ thirdPerson: boolean }> = ({ thirdPerson }) => {
-  let mesh = useLoader(
-    GLTFLoader,
-    process.env.PUBLIC_URL + "/models/car.glb"
-  ).scene;
-
+const Car: FC<{ thirdPerson: boolean; mesh: any }> = ({
+  thirdPerson,
+  mesh,
+}) => {
   const position: [x: number, y: number, z: number] = [-1.5, 0.5, 3];
   const width = 0.15;
   const height = 0.07;

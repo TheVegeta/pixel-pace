@@ -1,21 +1,13 @@
-import { useLoader } from "@react-three/fiber";
-import { useEffect } from "react";
-import { LinearSRGBColorSpace, TextureLoader } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { FC, useEffect } from "react";
+import { LinearSRGBColorSpace } from "three";
 import ColliderBox from "./ColliderBox";
 import Ramp from "./Ramp";
 
-const Track = () => {
-  const result = useLoader(
-    GLTFLoader,
-    process.env.PUBLIC_URL + "/models/track.glb"
-  );
-
-  const colorMap = useLoader(
-    TextureLoader,
-    process.env.PUBLIC_URL + "/textures/track.png"
-  );
-
+const Track: FC<{ result: any; colorMap: any; rampResult: any }> = ({
+  colorMap,
+  result,
+  rampResult,
+}) => {
   useEffect(() => {
     if (colorMap) {
       colorMap.anisotropy = 16;
@@ -23,7 +15,6 @@ const Track = () => {
     }
   }, [colorMap]);
 
-  // @ts-ignore
   let geometry = result.scene.children[0].geometry;
 
   return (
@@ -64,7 +55,7 @@ const Track = () => {
       <ColliderBox position={[-4.9, 0, -0.58]} scale={[0.1, 0.5, 0.1]} />
       <ColliderBox position={[-0.3, 0, 1]} scale={[0.1, 0.5, 0.1]} />
 
-      <Ramp />
+      <Ramp rampResult={rampResult} />
     </>
   );
 };
