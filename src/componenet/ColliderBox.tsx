@@ -9,14 +9,12 @@ const ColliderBox = ({ position, scale }: { position: any; scale: any }) => {
     type: "Static",
   }));
 
-  return (
-    debug && (
-      <mesh position={position}>
-        <boxGeometry args={scale} />
-        <meshBasicMaterial transparent={true} opacity={0.25} />
-      </mesh>
-    )
-  );
+  return debug ? (
+    <mesh position={position}>
+      <boxGeometry args={scale} />
+      <meshBasicMaterial transparent={true} opacity={0.25} />
+    </mesh>
+  ) : null;
 };
 
 export default ColliderBox;
